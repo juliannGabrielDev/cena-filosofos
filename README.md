@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# La Cena de los Filósofos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una simulación del problema de la Cena de los Filósofos, un problema clásico de sincronización en ciencias de la computación. Esta aplicación visualiza el problema con cinco filósofos sentados alrededor de una mesa circular.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El problema de la cena de los filósofos es un ejemplo utilizado para ilustrar los problemas de sincronización en sistemas operativos y programación concurrente. Cinco filósofos se sientan en una mesa redonda con un plato de espaguetis frente a cada uno. Hay un tenedor entre cada par de filósofos. Un filósofo necesita dos tenedores para comer. El desafío es diseñar un protocolo que permita a los filósofos comer sin que se produzcan interbloqueos (deadlocks) o inanición (starvation).
 
-## React Compiler
+Esta simulación visualiza los tres estados de un filósofo:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Pensando:** El filósofo está pensando y no necesita tenedores.
+-   **Hambriento:** El filósofo quiere comer y necesita dos tenedores.
+-   **Comiendo:** El filósofo tiene dos tenedores y está comiendo.
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Para ejecutar este proyecto localmente, sigue estos pasos:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Clona el repositorio:**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    ```bash
+    git clone https://github.com/juliannGabrielDev/cena-filosofos.git
+    cd cena-filosofos
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2.  **Instala las dependencias:**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+    ```bash
+    npm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  **Inicia el servidor de desarrollo:**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    ```bash
+    npm run dev
+    ```
+
+    La aplicación estará disponible en `http://localhost:5173`.
+
+## Uso
+
+-   **Iniciar Simulación:** Haz clic en este botón para comenzar la simulación. Los filósofos comenzarán a pensar, tener hambre y comer.
+-   **Detener Simulación:** Haz clic en este botón para pausar la simulación.
+-   **Reiniciar:** Haz clic en este botón para restablecer la simulación a su estado inicial.
+
+## Tecnologías Utilizadas
+
+-   **React:** Una biblioteca de JavaScript para construir interfaces de usuario.
+-   **Vite:** Una herramienta de construcción de frontend moderna y rápida.
+-   **TypeScript:** Un superconjunto de JavaScript que añade tipado estático.
+-   **GSAP (GreenSock Animation Platform):** Una biblioteca de animación de JavaScript para crear animaciones de alto rendimiento.
+-   **Tailwind CSS:** Un framework de CSS de utilidad primero para un diseño rápido de interfaces de usuario.
