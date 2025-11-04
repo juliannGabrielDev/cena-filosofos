@@ -4,9 +4,8 @@ import Aside from './components/Aside';
 import Table from './components/Table';
 import Spoon from './components/Spoon';
 import { useDiningPhilosophers } from './hooks/useDiningPhilosophers';
-import logo from './assets/images/logo.svg';
 import Footer from './components/Footer';
-import githubIcon from './assets/images/github_light.svg';
+import Navbar from './components/Navbar';
 
 const App: FC = () => {
 	const { philosophers, spoons, isRunning, start, stop, reset } =
@@ -15,28 +14,7 @@ const App: FC = () => {
 	return (
 		<>
 			<div className="max-w-7xl mx-auto">
-				<header className="flex items-center p-2 sm:p-10 bg-white gap-2 sm:gap-3">
-					<img
-						src={logo}
-						alt="Logo"
-						className="w-5 sm:w-6 -translate-y-0.5"
-					/>
-					<h1 className="text-xl sm:text-2xl font-bitcount leading-normal sm:leading-none">
-						La Cena de los Filósofos
-					</h1>
-					<a
-						href="https://github.com/juliannGabrielDev/ram-simulator"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="ml-auto"
-					>
-						<img
-							src={githubIcon}
-							alt="GitHub"
-							className="w-5 h-5 sm:w-6 sm:h-6"
-						/>
-					</a>
-				</header>
+				<Navbar />
 				<div className="grid grid-cols-[300px_1fr] gap-6 bg-white p-6 pt-0 font-inter">
 					<Aside
 						isRunning={isRunning}
@@ -44,7 +22,7 @@ const App: FC = () => {
 						onStop={stop}
 						onReset={reset}
 					/>
-					<div className="relative flex items-center justify-center h-screen border-2 border-[rgb(156_163_175)] bg-white overflow-hidden">
+					<div className="relative flex items-center justify-center h-screen border-2 border-[rgb(156_163_175)] bg-white rounded-2xl overflow-hidden">
 						{/* Mesa en el centro */}
 						<Table className="z-10" />
 
