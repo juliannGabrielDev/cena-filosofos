@@ -18,3 +18,46 @@
 	--font-bitcount: "BitcountSingle", sans-serif;
 	--font-inter: "Inter", sans-serif;
 }
+
+.page-reveal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.reveal-mask {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mask-image: url('./assets/images/logo.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: white;
+}
+
+.mask-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
