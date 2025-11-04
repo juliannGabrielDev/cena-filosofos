@@ -12,6 +12,7 @@ import { useRef } from 'react';
 interface PhilosopherProps {
 	className?: string;
 	state?: 'thinking' | 'hungry' | 'eating';
+	startAnimation: boolean;
 }
 
 interface StateImage {
@@ -45,39 +46,46 @@ const STATE_CONFIG: Record<string, StateConfig> = {
 	},
 };
 
-const Philosopher: FC<PhilosopherProps> = ({ className = '', state }) => {
+const Philosopher: FC<PhilosopherProps> = ({
+	className = '',
+	state,
+	startAnimation,
+}) => {
 	const philosopherRef = useRef(null);
 
-	useGSAP(() => {
-		gsap.from(philosopherRef.current, {
-			duration: 1,
-			scale: 0,
-			ease: 'back',
-		});
-	});
+	useGSAP(
+		() => {
+			if (startAnimation) {
+				gsap.from(philosopherRef.current, {
+					duration: 1,
+					scale: 0,
+					ease: 'back',
+					delay: 1.5,
+				});
+			}
+		},
+		{ dependencies: [startAnimation] }
+	);
 
-	// Estado por defecto
-	if (!state) {
-		return (
-			<div ref={philosopherRef} className={`${className} p-4`}>
-				<img className="w-20" src={philosopher} alt="Philosopher" />
-			</div>
-		);
-	}
-
-	const config = STATE_CONFIG[state];
-	const containerClasses = `${className} ${config.bgColor} flex p-4 rounded-2xl`;
+	const config = state ? STATE_CONFIG[state] : null;
+	const containerClasses = config
+		? `${className} ${config.bgColor} flex p-4 rounded-2xl`
+		: `${className} p-4`;
 
 	return (
 		<div ref={philosopherRef} className={containerClasses}>
-			{config.images.map((image, index) => (
-				<img
-					key={`${state}-${index}`}
-					className="w-20"
-					src={image.src}
-					alt={image.alt}
-				/>
-			))}
+			{!config && (
+				<img className="w-20" src={philosopher} alt="Philosopher" />
+			)}
+			{config &&
+				config.images.map((image, index) => (
+					<img
+						key={`${state}-${index}`}
+						className="w-20"
+						src={image.src}
+						alt={image.alt}
+					/>
+				))}
 		</div>
 	);
 };

@@ -7,18 +7,25 @@ import { useRef } from 'react';
 interface SpoonProps {
 	className?: string;
 	available?: boolean;
+	startAnimation: boolean;
 }
 
-const Spoon: FC<SpoonProps> = ({ className, available = true }) => {
+const Spoon: FC<SpoonProps> = ({ className, available = true, startAnimation }) => {
 	const spoonRef = useRef(null);
 
-	useGSAP(() => {
-		gsap.from(spoonRef.current, {
-			duration: 1,
-			scale: 0,
-			ease: 'back',
-		});
-	});
+	useGSAP(
+		() => {
+			if (startAnimation) {
+				gsap.from(spoonRef.current, {
+					duration: 1,
+					scale: 0,
+					ease: 'back',
+					delay: 1,
+				});
+			}
+		},
+		{ dependencies: [startAnimation] }
+	);
 
 	return (
 		<div ref={spoonRef} className={className}>

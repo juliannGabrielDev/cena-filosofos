@@ -5,18 +5,25 @@ import { useRef } from 'react';
 
 interface TableProps {
 	className?: string;
+	startAnimation: boolean;
 }
 
-const Table: FC<TableProps> = ({ className }) => {
+const Table: FC<TableProps> = ({ className, startAnimation }) => {
 	const tableRef = useRef(null);
 
-	useGSAP(() => {
-		gsap.from(tableRef.current, {
-			duration: 1,
-			scale: 0,
-			ease: 'back',
-		});
-	});
+	useGSAP(
+		() => {
+			if (startAnimation) {
+				gsap.from(tableRef.current, {
+					duration: 1,
+					scale: 0,
+					ease: 'back',
+					delay: 0.5,
+				});
+			}
+		},
+		{ dependencies: [startAnimation] }
+	);
 
 	return (
 		<div
