@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@font-face {
+	font-family: "BitcountSingle";
+	src: url("./assets/fonts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf")
+		format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Inter";
+	src: url("./assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+}
+
+@theme {
+	--font-bitcount: "BitcountSingle", sans-serif;
+	--font-inter: "Inter", sans-serif;
+}
