@@ -35,7 +35,7 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
     bun run dev
     ```
 
-    La aplicación estará disponible en `http://localhost:5173`.
+    La aplicación estará disponible en `https://julianngabrieldev.github.io/cena-filosofos/`.
 
 Nota: este README usa `bun` como gestor de paquetes y para ejecutar scripts. Si prefieres, muchos comandos de `npm` también funcionan con `bun` (por ejemplo `bun install` en lugar de `npm install`). Asegúrate de tener Bun instalado: https://bun.sh/
 
@@ -58,17 +58,3 @@ Nota: este README usa `bun` como gestor de paquetes y para ejecutar scripts. Si 
 A continuación hay una captura de la interfaz de usuario de la simulación.
 
 ![Captura de la aplicación - La Cena de los Filósofos](public/preview.png)
-
-Notas:
-
-- Si quieres usar la imagen incluida en las capturas adjuntas, copia el archivo en `public/screenshot.png`.
-- Alternativamente puedes usar `docs/screenshot.png` o `src/assets/images/screenshot.png` — en ese caso, actualiza la ruta en la etiqueta anterior.
-
-Consejo rápido (desde la raíz del repositorio):
-
-```bash
-# copia una imagen local hacia `public/screenshot.png`
-cp /ruta/a/tu/imagen.png public/screenshot.png
-```
-
-Esto permitirá que GitHub y Vite sirvan la imagen correctamente cuando veas el `README.md` en el repositorio o cuando lo despliegues.
